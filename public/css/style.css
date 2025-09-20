@@ -1,0 +1,141 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+/* .main{
+    margin: 2rem;
+} */
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    font-size: 2rem;
+    color: #fe424d;
+}
+
+.nav-link{
+    color: #000000 !important;
+}
+
+/* footer */
+
+.f-info-links a{
+    text-decoration: none;
+    color: #000000;
+    margin-right: 1rem;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+    
+}
+
+.f-info-links , .f-info-socails , .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.f-info-socails i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    opacity: 0.5;
+    
+}
+
+.f-info-socails i:hover{
+    opacity: 1;
+    cursor: pointer;
+    scale: 1.5;
+}
+
+
+
+.f-info{
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ff8686;
+    flex-wrap: wrap;
+    align-items: space-evenly;
+    justify-content: center;
+}
+
+/* Cards */
+
+.listing-card{
+    border:none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+
+}
+
+.card-body{
+    padding: 0 !important;
+}
+.card-text p{
+    font-weight: 400;
+
+}
+
+/* Making  every card to navigate to its detiled post i.e making it an acnhor tag */
+
+.listing-link{
+    text-decoration: none;
+}
+
+/* Adding hover effect */
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.3;
+    background-color: rgba(255, 255, 255);
+}
+
+.add-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+}
+
+
+/*SHOW IMAGE  */
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+
+
+  /* Chrome, Safari, Edge, Opera */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
+

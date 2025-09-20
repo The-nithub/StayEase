@@ -1,0 +1,151 @@
+  <% layout("/layouts/boilerplate") %>
+  <style>
+    #filters{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      
+    }
+
+    .filter{
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      margin-right: 2rem;
+      opacity: 0.7;
+    }
+
+    .filter:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+    .tax-info{
+      display: none;
+    }
+    .tax-toggle{
+      border: 2px solid black;
+      border-radius: 25px;
+      padding: 10px;
+      margin-bottom: 1rem;
+      /* background-color: #dbdada; */
+      height: 3rem;
+    }
+  </style>
+    <div id="filters">
+      <div class="filter">
+        <div>
+          <i class="fa-solid fa-fire fa-fade" style="color: #f2021a;"></i>
+        </div>
+        <p>Trending</p>
+    </div>
+    <div class="filter">
+        <div>
+          <i class="fa-solid fa-tents fa-bounce" style="color: #3fe99f;"></i>
+        </div>
+        <p>Camping Grounds</p>
+    </div>
+      <div class="filter">
+        <div>
+          <i class="fa-solid fa-bed fa-bounce" style="color: #B197FC;"></i>
+        </div>
+        <p>Rooms</p>
+    </div>
+    <div class="filter">
+        <div>
+         <i class="fa-solid fa-snowflake fa-bounce" style="color: #9bbbf3;"></i>
+        </div>
+        <p>Snowy Regions</p>
+    </div>
+     <div class="filter">
+        <div>
+          <i class="fa-solid fa-city fa-bounce" style="color: #d846e9;"></i>
+        </div>
+        <p>Iconic Cities</p>
+    </div>
+      <div class="filter">
+        <div>
+          <i class="fa-solid fa-mountain-sun fa-bounce" style="color: #5a3036;"></i>
+        </div>
+        <p>Mountains</p>
+    </div>
+     <div class="filter">
+        <div>
+          <i class="fa-solid fa-tree fa-bounce" style="color: #3bbf69;"></i>
+        </div>
+        <p>Forest Areas</p>
+    </div>
+      <div class="filter">
+        <div>
+         <i class="fa-solid fa-person-swimming fa-bounce" style="color: #74C0FC;"></i>
+        </div>
+        <p>Amazing Pools</p>
+    </div>
+    <!-- <div class="filter">
+        <div>
+          <i class="fa-solid fa-hotel fa-bounce" style="color: #caf042;"></i>
+        </div>
+        <p>Luxury Hotels</p>
+    </div>
+      <div class="filter">
+        <div>
+         <i class="fa-solid fa-cloud-rain fa-bounce" style="color: #6d00a8;"></i>
+        </div>
+        <p>Rainy Regions</p>
+    </div> -->
+    <div class="tax-toggle">
+
+      <div class="form-check-reverse form-switch mb-2">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
+  </div>
+    </div>
+    
+      
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <% for(let listing of allListings) { %>
+          <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <img src="<%=listing.image.url %>" class="card-img-top" alt="listing-images" style="height: 20rem;">
+                <div class="card-img-overlay">
+                  <!-- <h5 class="card-title"><%=listing.title %></h5>
+                  <p class="card-text"><%= listing.description %></p>
+                  <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                      <b><%= listing.title %></b><br>
+                      INR &#8377;<%= Number(listing.price).toLocaleString("en-IN")%> /Night
+                      <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+                    </p>
+                </div>
+            </div>
+          </a>
+        <% } %>
+
+    </div>
+
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+
+    let taxInfo = document.getElementsByClassName("tax-info");
+
+    for(tax of taxInfo)
+    {
+      if(tax.style.display != "inline")
+        {
+          tax.style.display = "inline";
+        }else
+        {
+          tax.style.display = "none";
+        }
+    }
+    console.log("clicked");
+  })
+</script>
+
+
+
+
