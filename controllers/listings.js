@@ -2,8 +2,50 @@ const Listing = require("../models/listing");
 
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  // const allListings = await Listing.find({});
+  // res.render("listings/index.ejs", { allListings });
+
+  try {
+    const page = Math.max(1,parseInt(req.query.page) || 1);
+
+    const items_per_page = 9;
+
+    const skip = (page - 1)*items_per_page;
+
+    const[totalItems , listings] = await Promise.all([
+      Listing.countDocuments({}),
+      Listing.find({})
+      .skip(skip)
+      .limit(items_per_page)
+      .lean()
+      .exec()
+    ]);
+
+    console.log("DEBUG:", {
+  page,
+  skip,
+  items_per_page,
+  totalItems,
+  listingsReturned: listings.length
+});
+
+
+    const totalPages = Math.max(1,Math.ceil(totalItems/items_per_page));
+    const currentPage = Math.min(page,totalPages);
+
+    res.render("listings/index.ejs",{
+      listings,
+      currentPage,
+      totalPages,
+      itemsPerPage:items_per_page,
+      totalItems
+    });
+
+  } catch (error) {
+    console.log("this error is due to pagination",error);
+
+    res.status(500).send("something went wrong near paginatoin index route");
+  }
 };
 
 module.exports.renderNewForm = (req, res) => {

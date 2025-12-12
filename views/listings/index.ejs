@@ -103,28 +103,55 @@
       
     </div>
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for(let listing of allListings) { %>
-          <a href="/listings/<%= listing._id %>" class="listing-link">
-            <div class="card col listing-card">
-                <img src="<%=listing.image.url %>" class="card-img-top" alt="listing-images" style="height: 20rem;">
-                <div class="card-img-overlay">
-                  <!-- <h5 class="card-title"><%=listing.title %></h5>
-                  <p class="card-text"><%= listing.description %></p>
-                  <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                      <b><%= listing.title %></b><br>
-                      INR &#8377;<%= Number(listing.price).toLocaleString("en-IN")%> /Night
-                      <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
-                    </p>
-                </div>
-            </div>
-          </a>
-        <% } %>
 
-    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for (let listing of listings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-images" style="height: 20rem;">
+        <div class="card-img-overlay"></div>
+
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b><br>
+            INR &#8377;<%= Number(listing.price).toLocaleString("en-IN") %> /Night
+            <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+          </p>
+        </div>
+      </div>
+    </a>
+  <% } %>
+</div>
+
+<nav aria-label="Listings pagination">
+  <ul class="pagination justify-content-center mt-4">
+
+    <% if (currentPage > 1) { %>
+      <li class="page-item">
+        <a class="page-link" href="?page=<%= currentPage - 1 %>">Previous</a>
+      </li>
+    <% } else { %>
+      <li class="page-item disabled"><span class="page-link">Previous</span></li>
+    <% } %>
+
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+      </li>
+    <% } %>
+
+    <% if (currentPage < totalPages) { %>
+      <li class="page-item">
+        <a class="page-link" href="?page=<%= currentPage + 1 %>">Next</a>
+      </li>
+    <% } else { %>
+      <li class="page-item disabled"><span class="page-link">Next</span></li>
+    <% } %>
+
+  </ul>
+</nav>
+
 
 <script>
   let taxSwitch = document.getElementById("switchCheckDefault");
