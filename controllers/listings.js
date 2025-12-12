@@ -21,13 +21,7 @@ module.exports.index = async (req, res) => {
       .exec()
     ]);
 
-    console.log("DEBUG:", {
-  page,
-  skip,
-  items_per_page,
-  totalItems,
-  listingsReturned: listings.length
-});
+    
 
 
     const totalPages = Math.max(1,Math.ceil(totalItems/items_per_page));

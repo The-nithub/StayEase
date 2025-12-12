@@ -62,6 +62,7 @@
       </form>
 
       <hr>
+      
     </div>
     <% } %>
     <!-- reviews -->
@@ -74,10 +75,14 @@
           <h5 class="card-title">@<%= review.author.username %></h5>
           <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
           <p class="card-text"><%= review.comment %></p>
+          <hr>
         </div>
+        <% if(CurUser && review.author._id.equals(CurUser._id)) {%>
+      
         <form class="mb-3" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
           <button class="btn btn-dark btn-sm">Delete</button>
         </form>
+        <% } %>
       </div>
       <% } %>
     </div>
