@@ -50,18 +50,7 @@ It provides a seamless experience for discovering stays, viewing detailed proper
 
 ---
 
-# 📸 Preview
 
-## Home Page
-_Add screenshots here_
-
-## Listing Details
-_Add screenshots here_
-
-## Create Listing
-_Add screenshots here_
-
----
 
 # 🚀 Installation & Setup
 
